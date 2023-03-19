@@ -31,3 +31,12 @@ module "create_ec2_instance" {
   ec2_security_group = module.create_security_group.security_group_id
 }
 
+module "install_jenkins_remote_exec" {
+  source = "./modules/provisioner"
+  host = module.create_ec2_instance.ec2_public_ip_address
+  user = var.root_user
+  ec2_pem = var.root_key_path
+  src = var.root_src
+  dest = var.root_dest
+}
+
