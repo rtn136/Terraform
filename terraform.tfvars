@@ -1,0 +1,5 @@
+root_s3_backend_bucket_name="ratan-s3-terraform-backend-5378637678"
+root_s3_backend_key="main/terraform.tfstate"
+root_region="us-east-1"
+root_ddb_backend_table_name="ratan-ddb-terraform-backend-5378637678"
+root_ddb_backend_field_name="LockID"
