@@ -13,3 +13,21 @@ module "create_ddb_backend" {
   field_name = var.root_ddb_backend_field_name
 }
 
+module "create_key_pair" {
+  source = "./modules/create_key_pair"
+  key_pair_key_name = var.root_key_pair_key_name
+}
+
+module "create_security_group" {
+  source = "./modules/create_security_group"
+  jenkins_security_group_name = var.root_jenkins_security_group_name
+}
+
+module "create_ec2_instance" {
+  source = "./modules/create_ec2_instance"
+  ec2_ami_id = var.root_ami_id
+  ec2_instance_type = var.root_instance_type
+  ec2_key_name = module.create_key_pair.pem_key_pair_id
+  ec2_security_group = module.create_security_group.security_group_id
+}
+
