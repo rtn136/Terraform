@@ -5,7 +5,7 @@ resource "tls_private_key" "jenkins_private_key" {
 
 resource "local_file" "pem_key" {
   content  = tls_private_key.jenkins_private_key.private_key_pem
-  filename = "F:/DevOps Class/Terraform_Practice/terraform/keys/jenkins_key_pair.pem"
+  filename = var.key_pair_path
   file_permission = "0400"
 }
 
