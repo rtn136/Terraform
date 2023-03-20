@@ -2,20 +2,21 @@ provider "aws" {
     region = var.root_region
 }
 
-module "create_s3_backend" {
-  source = "./modules/create_s3_backend"
-  bucket_name = var.root_s3_backend_bucket_name
-}
+# module "create_s3_backend" {
+#   source = "./modules/create_s3_backend"
+#   bucket_name = var.root_s3_backend_bucket_name
+# }
 
-module "create_ddb_backend" {
-  source = "./modules/create_ddb_backend"
-  table_name = var.root_ddb_backend_table_name
-  field_name = var.root_ddb_backend_field_name
-}
+# module "create_ddb_backend" {
+#   source = "./modules/create_ddb_backend"
+#   table_name = var.root_ddb_backend_table_name
+#   field_name = var.root_ddb_backend_field_name
+# }
 
 module "create_key_pair" {
   source = "./modules/create_key_pair"
   key_pair_key_name = var.root_key_pair_key_name
+  key_pair_path = var.root_key_path
 }
 
 module "create_security_group" {
